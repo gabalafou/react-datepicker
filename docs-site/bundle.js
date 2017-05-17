@@ -37682,9 +37682,7 @@
 
 	    _this.onInputKeyDown = function (event) {
 	      if (!_this.state.open && !_this.props.inline) {
-	        if (/^Arrow/.test(event.key)) {
-	          _this.onInputClick();
-	        }
+	        _this.onInputClick();
 	        return;
 	      }
 	      var copy = (0, _moment2.default)(_this.state.preSelection);
@@ -37828,6 +37826,13 @@
 	  }
 
 	  _createClass(DatePicker, [{
+	    key: 'componentWillUpdate',
+	    value: function componentWillUpdate(nextProps, nextState) {
+	      if (nextProps.selected !== this.props.selected) {
+	        this.setPreSelection(nextProps.selected);
+	      }
+	    }
+	  }, {
 	    key: 'componentWillUnmount',
 	    value: function componentWillUnmount() {
 	      this.clearPreventFocusTimeout();
@@ -38199,6 +38204,7 @@
 	      return _react2.default.createElement(_month_dropdown2.default, {
 	        dropdownMode: _this.props.dropdownMode,
 	        locale: _this.props.locale,
+	        dateFormat: _this.props.dateFormat,
 	        onChange: _this.changeMonth,
 	        month: _this.state.date.month() });
 	    };
@@ -55799,9 +55805,11 @@
 	  _createClass(MonthDropdown, [{
 	    key: 'render',
 	    value: function render() {
+	      var _this2 = this;
+
 	      var localeData = _moment2.default.localeData(this.props.locale);
 	      var monthNames = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map(function (M) {
-	        return localeData.months((0, _moment2.default)({ M: M }));
+	        return localeData.months((0, _moment2.default)({ M: M }), _this2.props.dateFormat);
 	      });
 
 	      var renderedDropdown = void 0;
@@ -55829,6 +55837,7 @@
 	MonthDropdown.propTypes = {
 	  dropdownMode: _propTypes2.default.oneOf(['scroll', 'select']).isRequired,
 	  locale: _propTypes2.default.string,
+	  dateFormat: _propTypes2.default.string.isRequired,
 	  month: _propTypes2.default.number.isRequired,
 	  onChange: _propTypes2.default.func.isRequired
 	};
@@ -60082,7 +60091,7 @@
 	          _react2.default.createElement(
 	            'code',
 	            { className: 'jsx' },
-	            '\n<DatePicker\n    selected={this.state.startDate}\n    onChange={this.handleChange}\n    popoverAttachment="bottom center"\n    popoverTargetAttachment="top center"\n    popoverTargetOffset="0px 0px"\n/>\n'
+	            '\n<DatePicker\n    selected={this.state.startDate}\n    onChange={this.handleChange}\n    popoverAttachment="bottom right"\n    popoverTargetAttachment="top right"\n    popoverTargetOffset="0px 0px"\n/>\n'
 	          )
 	        ),
 	        _react2.default.createElement(
@@ -60091,8 +60100,8 @@
 	          _react2.default.createElement(_reactDatepicker2.default, {
 	            selected: this.state.startDate,
 	            onChange: this.handleChange,
-	            popoverAttachment: 'bottom center',
-	            popoverTargetAttachment: 'top center',
+	            popoverAttachment: 'bottom right',
+	            popoverTargetAttachment: 'top right',
 	            popoverTargetOffset: '0px 0px' })
 	        )
 	      );

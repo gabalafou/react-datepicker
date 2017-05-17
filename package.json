@@ -1,10 +1,10 @@
 {
-  "author": "HackerOne",
-  "name": "react-datepicker",
+  "author": "SpacedOut",
+  "name": "@spaced-out/react-datepicker",
   "description": "A simple and reusable datepicker component for React",
-  "version": "0.46.0",
+  "version": "0.46.0-spacedout.1",
   "license": "MIT",
-  "homepage": "https://github.com/Hacker0x01/react-datepicker",
+  "homepage": "https://github.com/Spaced-Out/react-datepicker",
   "main": "dist/react-datepicker.min.js",
   "style": "dist/react-datepicker.min.css",
   "files": [
@@ -22,10 +22,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/Hacker0x01/react-datepicker.git"
+    "url": "git://github.com/Spaced-Out/react-datepicker.git"
   },
   "bugs": {
-    "url": "https://github.com/Hacker0x01/react-datepicker/issues"
+    "url": "https://github.com/Spaced-Out/react-datepicker/issues"
   },
   "devDependencies": {
     "babel-core": "^6.22.1",
